@@ -1,9 +1,10 @@
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
+import Card from '../UI/Card';
 
 const Expenses = (props) => {
 	return (
-		<div className="expenses">
+		<Card className="expenses">
             {props.AllExpenses.map(exp => 
               <ExpenseItem 
                     ItemDate = {exp.ItemDate}
@@ -11,7 +12,7 @@ const Expenses = (props) => {
                     Price = {exp.Price}
                 />  
             )}
-        </div>
+        </Card>
 	)
 }
 export default Expenses;
