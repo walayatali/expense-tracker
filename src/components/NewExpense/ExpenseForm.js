@@ -4,9 +4,9 @@ import './ExpenseForm.css';
 function ExpenseForm(props)	{
 
 	const [userInput, setUserInput] = useState({
-		title: 'test title',
-		amount: '12.00',
-		date: '2022-01-01'
+		title: '',
+		amount: '',
+		date: '',
 	});
 	
 	const titleChangeHandler = (e) => {
@@ -36,7 +36,11 @@ function ExpenseForm(props)	{
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		const expenseData = userInput;
+		const expenseData = {
+			"Title": userInput.title,
+			"Price": userInput.amount,
+			"ItemDate": new Date(userInput.date),
+		};
 
 		props.onSaveExpenseData(expenseData);
 	}

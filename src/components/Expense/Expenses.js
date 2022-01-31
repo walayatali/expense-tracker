@@ -5,6 +5,7 @@ import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 
 const Expenses = (props) => {
+    console.log(props.AllExpenses);
 
     const [ expenseFilterYear, setExpenseFilterYear ] = useState('2022');
 
