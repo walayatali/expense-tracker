@@ -65,7 +65,7 @@ function ExpenseForm(props)	{
 				</div>
 				<div className="new-expense__control">
 					<label>Date</label>
-					<input onChange={dateChangeHandler} type="date" min="2022-01-01" step="2022-12-31" value={userInput.date}/>
+					<input onChange={dateChangeHandler} type="date" min="2018-01-01" step="2022-12-31" value={userInput.date}/>
 				</div>
 			</div>
 			<div className="new-expense__actions">

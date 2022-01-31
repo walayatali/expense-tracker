@@ -5,7 +5,9 @@ import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 
 const Expenses = (props) => {
-    console.log(props.AllExpenses);
+    
+    let AllExpenses = props.AllExpenses;
+
 
     const [ expenseFilterYear, setExpenseFilterYear ] = useState('2022');
 
@@ -13,18 +15,28 @@ const Expenses = (props) => {
         setExpenseFilterYear(filterVal);
     }
 
+    const subExpenses =  AllExpenses.filter(function (el) {
+        return el.ItemDate.getFullYear().toString() === expenseFilterYear;
+    });
+
+    let conditionalContent = <p>No Items found !!!</p>;
+
+    if (subExpenses.length > 0) {
+        conditionalContent = subExpenses.map(exp => 
+          <ExpenseItem
+                key = {exp.id} 
+                ItemDate = {exp.ItemDate}
+                Title = {exp.Title}
+                Price = {exp.Price}
+            />  
+        )
+    }
+
 	return (
         <div>
     		<Card className="expenses">
             <ExpensesFilter onChangeExpensesFilter = {expensesFilterHandler} selected={expenseFilterYear}/>
-                {props.AllExpenses.map(exp => 
-                  <ExpenseItem
-                        key = {exp.id} 
-                        ItemDate = {exp.ItemDate}
-                        Title = {exp.Title}
-                        Price = {exp.Price}
-                    />  
-                )}
+                {conditionalContent}
             </Card>
         </div>
 	)
