@@ -43,6 +43,12 @@ function ExpenseForm(props)	{
 		};
 
 		props.onSaveExpenseData(expenseData);
+
+		setUserInput({
+			title: '',
+			amount: '',
+			date: ''
+		});
 	}
 
 
